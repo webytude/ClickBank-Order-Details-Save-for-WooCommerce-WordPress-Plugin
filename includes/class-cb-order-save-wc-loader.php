@@ -1,26 +1,26 @@
 <?php
 
-/**
- * Register all actions and filters for the plugin
- *
- * @link       https://webytude.com
- * @since      1.0.0
- *
- * @package    Cb_Order_Save_Wc
- * @subpackage Cb_Order_Save_Wc/includes
- */
+	/**
+	 * Register all actions and filters for the plugin
+	 *
+	 * @link       https://webytude.com
+	 * @since      1.0.0
+	 *
+	 * @package    Cb_Order_Save_Wc
+	 * @subpackage Cb_Order_Save_Wc/includes
+	 */
 
-/**
- * Register all actions and filters for the plugin.
- *
- * Maintain a list of all hooks that are registered throughout
- * the plugin, and register them with the WordPress API. Call the
- * run function to execute the list of actions and filters.
- *
- * @package    Cb_Order_Save_Wc
- * @subpackage Cb_Order_Save_Wc/includes
- * @author     Webytude <mann.webytude@gmail.com>
- */
+	/**
+	 * Register all actions and filters for the plugin.
+	 *
+	 * Maintain a list of all hooks that are registered throughout
+	 * the plugin, and register them with the WordPress API. Call the
+	 * run function to execute the list of actions and filters.
+	 *
+	 * @package    Cb_Order_Save_Wc
+	 * @subpackage Cb_Order_Save_Wc/includes
+	 * @author     Webytude <mann.webytude@gmail.com>
+	 */
 class Cb_Order_Save_Wc_Loader {
 
 	/**
@@ -104,9 +104,7 @@ class Cb_Order_Save_Wc_Loader {
 			'priority'      => $priority,
 			'accepted_args' => $accepted_args
 		);
-
 		return $hooks;
-
 	}
 
 	/**
@@ -123,7 +121,5 @@ class Cb_Order_Save_Wc_Loader {
 		foreach ( $this->actions as $hook ) {
 			add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
 		}
-
 	}
-
 }

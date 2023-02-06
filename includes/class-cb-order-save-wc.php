@@ -1,34 +1,33 @@
 <?php
+	/**
+	 * The file that defines the core plugin class
+	 *
+	 * A class definition that includes attributes and functions used across both the
+	 * public-facing side of the site and the admin area.
+	 *
+	 * @link       https://webytude.com
+	 * @since      1.0.0
+	 *
+	 * @package    Cb_Order_Save_Wc
+	 * @subpackage Cb_Order_Save_Wc/includes
+	 */
 
-/**
- * The file that defines the core plugin class
- *
- * A class definition that includes attributes and functions used across both the
- * public-facing side of the site and the admin area.
- *
- * @link       https://webytude.com
- * @since      1.0.0
- *
- * @package    Cb_Order_Save_Wc
- * @subpackage Cb_Order_Save_Wc/includes
- */
+	 /**
+	 * The core plugin class.
+	 *
+	 * This is used to define internationalization, admin-specific hooks, and
+	 * public-facing site hooks.
+	 *
+	 * Also maintains the unique identifier of this plugin as well as the current
+	 * version of the plugin.
+	 *
+	 * @since      1.0.0
+	 * @package    Cb_Order_Save_Wc
+	 * @subpackage Cb_Order_Save_Wc/includes
+	 * @author     Webytude <mann.webytude@gmail.com>
+	 */
 
-/**
- * The core plugin class.
- *
- * This is used to define internationalization, admin-specific hooks, and
- * public-facing site hooks.
- *
- * Also maintains the unique identifier of this plugin as well as the current
- * version of the plugin.
- *
- * @since      1.0.0
- * @package    Cb_Order_Save_Wc
- * @subpackage Cb_Order_Save_Wc/includes
- * @author     Webytude <mann.webytude@gmail.com>
- */
 class Cb_Order_Save_Wc {
-
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
@@ -38,7 +37,6 @@ class Cb_Order_Save_Wc {
 	 * @var      Cb_Order_Save_Wc_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
-
 	/**
 	 * The unique identifier of this plugin.
 	 *
@@ -47,7 +45,6 @@ class Cb_Order_Save_Wc {
 	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
-
 	/**
 	 * The current version of the plugin.
 	 *
@@ -56,7 +53,6 @@ class Cb_Order_Save_Wc {
 	 * @var      string    $version    The current version of the plugin.
 	 */
 	protected $version;
-
 	/**
 	 * Define the core functionality of the plugin.
 	 *
@@ -66,7 +62,8 @@ class Cb_Order_Save_Wc {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct() {
+
+	 public function __construct() {
 		if ( defined( 'CB_ORDER_SAVE_WC_VERSION' ) ) {
 			$this->version = CB_ORDER_SAVE_WC_VERSION;
 		} else {
@@ -77,8 +74,7 @@ class Cb_Order_Save_Wc {
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
-		$this->define_public_hooks();
-
+		$this->define_api_hooks();
 	}
 
 	/**
@@ -89,7 +85,6 @@ class Cb_Order_Save_Wc {
 	 * - Cb_Order_Save_Wc_Loader. Orchestrates the hooks of the plugin.
 	 * - Cb_Order_Save_Wc_i18n. Defines internationalization functionality.
 	 * - Cb_Order_Save_Wc_Admin. Defines all hooks for the admin area.
-	 * - Cb_Order_Save_Wc_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -120,12 +115,11 @@ class Cb_Order_Save_Wc {
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-cb-order-save-wc-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cb-order-save-wc-api.php';
 
 		$this->loader = new Cb_Order_Save_Wc_Loader();
 
 	}
-
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
@@ -136,11 +130,9 @@ class Cb_Order_Save_Wc {
 	 * @access   private
 	 */
 	private function set_locale() {
-
 		$plugin_i18n = new Cb_Order_Save_Wc_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
 	}
 
 	/**
@@ -154,8 +146,8 @@ class Cb_Order_Save_Wc {
 
 		$plugin_admin = new Cb_Order_Save_Wc_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		#$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+		#$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 	}
 
@@ -166,12 +158,8 @@ class Cb_Order_Save_Wc {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_public_hooks() {
-
-		$plugin_public = new Cb_Order_Save_Wc_Public( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+	private function define_api_hooks() {
+		$plugin_api = new Cb_Order_Save_Wc_API( $this->get_plugin_name(), $this->get_version() );
 
 	}
 

@@ -1,25 +1,26 @@
 <?php
 
-/**
- * Fired during plugin activation
- *
- * @link       https://webytude.com
- * @since      1.0.0
- *
- * @package    Cb_Order_Save_Wc
- * @subpackage Cb_Order_Save_Wc/includes
- */
+	/**
+	 * Fired during plugin activation
+	 *
+	 * @link       https://webytude.com
+	 * @since      1.0.0
+	 *
+	 * @package    Cb_Order_Save_Wc
+	 * @subpackage Cb_Order_Save_Wc/includes
+	 */
 
-/**
- * Fired during plugin activation.
- *
- * This class defines all code necessary to run during the plugin's activation.
- *
- * @since      1.0.0
- * @package    Cb_Order_Save_Wc
- * @subpackage Cb_Order_Save_Wc/includes
- * @author     Webytude <mann.webytude@gmail.com>
- */
+	/**
+	 * Fired during plugin activation.
+	 *
+	 * This class defines all code necessary to run during the plugin's activation.
+	 *
+	 * @since      1.0.0
+	 * @package    Cb_Order_Save_Wc
+	 * @subpackage Cb_Order_Save_Wc/includes
+	 * @author     Webytude <mann.webytude@gmail.com>
+	 */
+
 class Cb_Order_Save_Wc_Activator {
 
 	/**
