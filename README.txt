@@ -1,41 +1,35 @@
 === Plugin Name ===
 Contributors: (this should be a list of wordpress.org userid's)
 Donate link: https://webytude.com
-Tags: comments, spam
+Tags: ClickBank, WooCommerce, ClickBank WordPress Plugin, Marketplace Plugin, ClickBank marketplace, WordPress marketplace, ClickBank plugin, ClickBank Order plugin
 Requires at least: 3.0.1
 Tested up to: 3.4
 Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+This plugin allows you to synchronizing ClickBank orders and customer information with WooCommerce Orders.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+This plugin, developed to solve the issue of connecting ClickBank order details with WooCommerce, works accurately and efficiently - saving you time and energy. This is a feature that ClickBank does not provide.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+This plugin was created to bridge the gap between ClickBank and WooCommerce, eliminating the need for manual synchronization of order details. This seamless integration is highly accurate, saving you both time and energy.
 
-A few notes about the sections above:
+Synchronizing ClickBank orders and customer information with WooCommerce is made easy for ClickBank vendors by using "plugin name".
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
+WooCommerce can be utilized by ClickBank vendors to keep their ClickBank orders and customer information in sync.
 
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
 
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+**How It Works:**
+
+Once the integration is done, When placing any order by the customer on ClickBank then the ClickBank API sent a request to the "ClickBank Order Details Save to WooCommerce" plugin and gets a notification to update order details.
+
+
+**How It Help:**
+
+If you are running your physical store on ClickBank then you need to manage your shipping and delivery. Using "ClickBank Order Details Save to WooCommerce" and WordPress WooCommers help you to manage your shipping and delivery to your important customer.
+
 
 == Installation ==
 
@@ -44,71 +38,18 @@ This section describes how to install the plugin and get it working.
 e.g.
 
 1. Upload `cb-order-save-wc.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
-
-== Frequently Asked Questions ==
-
-= A question that someone might have =
-
-An answer to that question.
-
-= What about foo bar? =
-
-Answer to foo bar dilemma.
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Add the "Secret Key" under WordPress main menu "ClickBank Vendor Settings"
+4. Update IPN URL to ClickBank -> Vendor Settings -> Advanced Tools from WordPress main menu "ClickBank Options"
+5. Add ClickBank Item Number to product under WooCommerce product "ClickBank" tab
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. Add the "Secret Key" under WordPress main menu "ClickBank Options"
+2. Update IPN URL to ClickBank Update IPN URL to ClickBank -> Vendor Settings -> Advanced Tools
+3. Add ClickBank Item Number to product details
 
 == Changelog ==
 
 = 1.0 =
-* A change since the previous version.
-* Another change.
-
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
-
-== Upgrade Notice ==
-
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
-
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== A brief Markdown Example ==
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`
+* initial release
