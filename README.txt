@@ -1,10 +1,9 @@
-=== Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
+=== ClickBank Order Details Save to WooCommerce ===
 Donate link: https://webytude.com
 Tags: ClickBank, WooCommerce, ClickBank WordPress Plugin, Marketplace Plugin, ClickBank marketplace, WordPress marketplace, ClickBank plugin, ClickBank Order plugin
 Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
+Tested up to: 6.1.1
+Stable tag: 6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +15,7 @@ This plugin, developed to solve the issue of connecting ClickBank order details 
 
 This plugin was created to bridge the gap between ClickBank and WooCommerce, eliminating the need for manual synchronization of order details. This seamless integration is highly accurate, saving you both time and energy.
 
-Synchronizing ClickBank orders and customer information with WooCommerce is made easy for ClickBank vendors by using "plugin name".
+Synchronizing ClickBank orders and customer information with WooCommerce is made easy for ClickBank vendors by using "ClickBank Order Details Save to WooCommerce".
 
 WooCommerce can be utilized by ClickBank vendors to keep their ClickBank orders and customer information in sync.
 
@@ -34,8 +33,6 @@ If you are running your physical store on ClickBank then you need to manage your
 == Installation ==
 
 This section describes how to install the plugin and get it working.
-
-e.g.
 
 1. Upload `cb-order-save-wc.php` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
