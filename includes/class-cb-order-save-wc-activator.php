@@ -36,7 +36,7 @@ class Cb_Order_Save_Wc_Activator {
 
 		$charset_collate = $wpdb->get_charset_collate();
 
-		$sql = "CREATE TABLE wp_clickbank (
+		$sql = "CREATE TABLE {$wpdb->prefix}clickbank (
 		id mediumint(9) NOT NULL AUTO_INCREMENT,
 		-- time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 		email varchar(255) NOT NULL,

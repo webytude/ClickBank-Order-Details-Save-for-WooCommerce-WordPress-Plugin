@@ -85,10 +85,30 @@ class Cb_Order_Save_Wc_API {
 			if( $wp->query_vars['cb-api'] == "clickbank_order" ){
 				// Buffer, we won't want any output here.
 				ob_start();
+				$secretKey = get_option( 'cb_secretkey' );
+
+				// get JSON from raw body...
+				$message = json_decode(file_get_contents('php://input'));
 				
-				$body = file_get_contents('php://input');
-			    $cb_order_detail = json_decode($body);
+				// Pull out the encrypted notification and the initialization vector for
+				// AES/CBC/PKCS5Padding decryption
+				$encrypted = $message->{'notification'};
+				$iv = $message->{'iv'};
+				#error_log("IV: $iv");
 				 
+				// decrypt the body...
+				$decrypted = trim(
+				 openssl_decrypt(base64_decode($encrypted),
+				 'AES-256-CBC',
+				 substr(sha1($secretKey), 0, 32),
+				 OPENSSL_RAW_DATA,
+				 base64_decode($iv)), "\0..\32");
+
+				 
+				////UTF8 Encoding, remove escape back slashes, and convert the decrypted string to a JSON object...
+				$sanitizedData = utf8_encode(stripslashes($decrypted));
+				$cb_order_detail = json_decode($decrypted);
+
 				if(empty($cb_order_detail)){
                     die("-1");
 				}
@@ -117,6 +137,11 @@ class Cb_Order_Save_Wc_API {
 	function cb_create_order( $request ){
 		global $wpdb;
 		
+		#$today_date = date('Y-m-d', time());
+		#$filename = plugin_dir_path(__FILE__) . $today_date.".txt";
+		#$myfile = fopen($filename, "a");
+		#ob_start();
+
         WC()->cart->empty_cart();
 
 		$email = $request->customer->shipping->email;
@@ -133,13 +158,17 @@ class Cb_Order_Save_Wc_API {
 		$postalCode = $address_obj->postalCode;
 		$country = $address_obj->country;
 
+		#echo "<pre>"; print_r($request); echo "</pre>";
+		#$data = ob_get_clean();
+		#fwrite($myfile, $data);
+		// fclose($myfile);
+		#ob_start();
+
 		$wpdb->insert($wpdb->prefix.'clickbank', array(
 			'email' => $email,
 			'receipt' => $receipt	
 		));
 		
-		$start_date = date('Y-m-d H:i:s');
-
 		$address_arr = array(
 			'first_name' => $firstname,
 			'last_name'  => $lastname,
@@ -178,7 +207,7 @@ class Cb_Order_Save_Wc_API {
 		$order->set_address( $address_arr, 'billing' );
 		$order->set_address( $address_arr, 'shipping' );
 		$order->calculate_totals();
-		$order->update_status("completed", 'Imported order', TRUE);
+		$order->update_status("processing", 'Imported order', TRUE);
 		
 	}
 
