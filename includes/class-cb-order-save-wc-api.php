@@ -86,42 +86,13 @@ class Cb_Order_Save_Wc_API {
 				// Buffer, we won't want any output here.
 				ob_start();
 				
-				 $body = file_get_contents('php://input');
-			     $cb_order_detail = json_decode($body);
-				/*
-				$secretKey = get_option( 'cb_secretkey' );
-			    // $secretKey = "OCUJFSSDWWYQSTQW";
-			    // get JSON from raw body...
-				$message = json_decode(file_get_contents('php://input'));				    
-
-				// Pull out the encrypted notification and the initialization vector for
-				// AES/CBC/PKCS5Padding decryption
-				$encrypted = $message->{'notification'};
-				$iv = $message->{'iv'};
-
-				// decrypt the body...
-				$decrypted = trim(
-				 openssl_decrypt(base64_decode($encrypted),
-				 'AES-256-CBC',
-				 substr(sha1($secretKey), 0, 32),
-				 OPENSSL_RAW_DATA,
-				 base64_decode($iv)), "\0..\32");
-
-				////UTF8 Encoding, remove escape back slashes, and convert the decrypted string to a JSON object...
-				$sanitizedData = utf8_encode(stripslashes($decrypted));
-				$cb_order_detail = json_decode($decrypted);
-
-				*/
-                      
-                //   echo '<pre>'; print_r($order); echo '</pre>';die;
+				$body = file_get_contents('php://input');
+			    $cb_order_detail = json_decode($body);
+				 
 				if(empty($cb_order_detail)){
                     die("-1");
 				}
 
-				// $this->update_order( $order );
-				// die;
-				 $this->cb_create_order( $cb_order_detail );
-				 die;
 				$receipt = $cb_order_detail->receipt;
 				
 				$results = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}clickbank WHERE receipt='$receipt'");
@@ -146,11 +117,7 @@ class Cb_Order_Save_Wc_API {
 	function cb_create_order( $request ){
 		global $wpdb;
 		
-        WC()->cart->empty_cart();        
-		$today_date = date('Y-m-d', time());
-		$filename = plugin_dir_path(__FILE__) . $today_date.".txt";
-		$myfile = fopen($filename, "a");
-		ob_start();
+        WC()->cart->empty_cart();
 
 		$email = $request->customer->shipping->email;
         $receipt = $request->receipt;
@@ -185,15 +152,8 @@ class Cb_Order_Save_Wc_API {
 			'country'   => $country
 		); 	  
 
-		// Now we create the order
-		// $order = wc_create_order();
 		$coupon_code = "";
-        // $new_product_price = $request->lineItems[0]->accountAmount;
-		
 		foreach ($request->lineItems as $key => $value) {
-
-			//echo '<pre>'; print_r($key); echo '</pre>';die;
-
 			$new_product_price = $value->accountAmount;
 			$itemNo = $value->itemNo;
 			$product_id = $this->cb_get_product_id( $itemNo );
@@ -219,13 +179,6 @@ class Cb_Order_Save_Wc_API {
 		$order->set_address( $address_arr, 'shipping' );
 		$order->calculate_totals();
 		$order->update_status("completed", 'Imported order', TRUE);
-
-		echo "<pre>"; print_r($order); echo "</pre>";
-		echo "<pre>"; print_r("completed order -> ".$receipt); echo "</pre>";
-		$data = ob_get_clean();
-		fwrite($myfile, $data);
-		fclose($myfile);
-		die;
 		
 	}
 

@@ -53,7 +53,6 @@ class Cb_Order_Save_Wc_Admin {
 
 		add_action( 'admin_menu', array( $this, 'create_plugin_settings_pages' ) );
 		add_action( 'admin_init', array( $this, 'setup_section' ) );
-		// add_action( 'admin_init', array( $this, 'setup_field' ) );
 
 		add_filter( 'woocommerce_product_data_tabs', array( $this, 'cb_woo_clickBank_product_tab' ) );
 		add_action( 'woocommerce_product_data_panels', array( $this, 'cb_woocommerce_product_data_panels' ) );
@@ -121,11 +120,6 @@ class Cb_Order_Save_Wc_Admin {
 			case 'our_first_section':
 			break;
 		}
-	}
-
-	public function setup_field() {
-		
-
 	}
 
 	public function field_callbacks( $arguments ) {
