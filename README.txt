@@ -15,7 +15,7 @@ This plugin was developed to solve the issue of connecting ClickBank order detai
 
 This plugin was created to bridge the gap between ClickBank and WooCommerce, eliminating the need for manual synchronization of order details. This seamless integration is highly accurate, saving you both time and energy.
 
-Synchronizing ClickBank orders and customer information with WooCommerce is made easy for ClickBank vendors by using "ClickBank Order Details Save to WooCommerce".
+Synchronizing ClickBank orders and customer information with WooCommerce is made easy for ClickBank vendors by using "ClickBank Order Details Save to WooCommerce" plugin.
 
 WooCommerce can be utilized by ClickBank vendors to keep their ClickBank orders and customer information in sync.
 
