@@ -13,7 +13,7 @@
 	 * @package           Cb_Order_Save_Wc
 	 *
 	 * @wordpress-plugin
-	 * Plugin Name:       ClickBank Order Details Save to WooCommerce
+	 * Plugin Name:       ClickBank Order Details Save for WooCommerce
 	 * Plugin URI:        https://webytude.com
 	 * Description:       This plugin allows you to synchronize ClickBank orders and customers information with WooCommerce orders and customers information.
 	 * Version:           1.0.0

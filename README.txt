@@ -1,4 +1,4 @@
-=== ClickBank Order Details Save to WooCommerce ===
+=== ClickBank Order Details Save for WooCommerce ===
 Donate link: https://webytude.com
 Tags: ClickBank, WooCommerce, ClickBank WordPress Plugin, Marketplace Plugin, ClickBank marketplace, WordPress marketplace, ClickBank plugin, ClickBank Order plugin, WooCommerce Add-Ons
 Requires at least: 3.0.1
@@ -15,19 +15,19 @@ This plugin was developed to solve the issue of connecting ClickBank order detai
 
 This plugin was created to bridge the gap between ClickBank and WooCommerce, eliminating the need for manual synchronization of order details. This seamless integration is highly accurate, saving you both time and energy.
 
-Synchronizing ClickBank orders and customer information with WooCommerce is made easy for ClickBank vendors by using "ClickBank Order Details Save to WooCommerce" plugin.
+Synchronizing ClickBank orders and customer information with WooCommerce is made easy for ClickBank vendors by using "ClickBank Order Details Save for WooCommerce" plugin.
 
 WooCommerce can be utilized by ClickBank vendors to keep their ClickBank orders and customer information in sync.
 
 
 **How It Works:**
 
-Once the integration is done, When placing any order by the customer on ClickBank then the ClickBank API sent a request to the "ClickBank Order Details Save to WooCommerce" plugin and gets a notification to update order details.
+Once the integration is done, When placing any order by the customer on ClickBank then the ClickBank API sent a request to the "ClickBank Order Details Save for WooCommerce" plugin and gets a notification to update order details.
 
 
 **How It Help:**
 
-If you are running your physical store on ClickBank then you need to manage your shipping and delivery. Using "ClickBank Order Details Save to WooCommerce" and WordPress WooCommers help you to manage your shipping and delivery to your important customer.
+If you are running your physical store on ClickBank then you need to manage your shipping and delivery. Using "ClickBank Order Details Save for WooCommerce" and WordPress WooCommers help you to manage your shipping and delivery to your important customer.
 
 
 == Installation ==
