@@ -3,7 +3,7 @@ Donate link: https://webytude.com
 Tags: ClickBank, WooCommerce, ClickBank WordPress Plugin, Marketplace Plugin, ClickBank marketplace, WordPress marketplace, ClickBank plugin, ClickBank Order plugin, WooCommerce Add-Ons
 Requires at least: 3.0.1
 Tested up to: 6.1.1
-Stable tag: 6.1
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
